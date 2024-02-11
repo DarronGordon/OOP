@@ -79,6 +79,28 @@ const Student = function (firstName, birthYear, course) {
     this.course = course;
 };
 
+Student.prototype = Object.create(Person.prototype)
+
 Student.prototype.introduce = function () {
-    console.log(`my name is ${this.firstName} and I study this ${this.course}`)
+    console.log(`my name is ${this.firstName} and I study ${this.course}`)
 }
+
+const ben = new Student('Ben', 2015, 'CS');
+ben.introduce();
+ben.calcAge();
+
+
+const ElectricCar = function (make, speed, currentBattery) {
+    Car.call(this, make, speed);
+    this.currentBattery = currentBattery;
+
+
+}
+ElectricCar.prototype = Object.create(ElectricCar.prototype);
+ElectricCar.prototype.chargeBattery = function (chargeTo) {
+    this.currentBattery = chargeTo;
+};
+
+const tesla = new ElectricCar('tesla', 100, 70);
+tesla.chargeBattery(90);
+console.log(tesla.currentBattery);
